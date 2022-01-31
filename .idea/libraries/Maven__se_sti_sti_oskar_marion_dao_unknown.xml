@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: se.sti:sti-oskar-marion-dao:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/se/sti/sti-oskar-marion-dao/unknown/sti-oskar-marion-dao-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/se/sti/sti-oskar-marion-dao/unknown/sti-oskar-marion-dao-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/se/sti/sti-oskar-marion-dao/unknown/sti-oskar-marion-dao-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

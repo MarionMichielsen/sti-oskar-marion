@@ -30,6 +30,8 @@
     </properties>
 
     <modules>
+        <module>sti-oskar-marion-dao</module>
+        <module>sti-oskar-marion-dao-impl</module>
         <module>sti-oskar-marion-domain</module>
         <module>sti-oskar-marion-service</module>
         <module>sti-oskar-marion-service-impl</module>

@@ -54,7 +54,6 @@ public class Student {
 
     public static Builder builder(){ return new Builder();}
 
-    //nested class / nästlad klass / inner class /inre klass
     public static class Builder {
 
         private String firstName;
