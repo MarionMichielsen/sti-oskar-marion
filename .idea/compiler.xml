@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sti-oskar-marion-test-unit" />
+        <module name="sti-oskar-marion-domain" />
+        <module name="sti-oskar-marion-service-impl" />
+        <module name="sti-oskar-marion-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sti-oskar-marion" target="8" />
+      <module name="sti-oskar-marion-domain" target="1.8" />
+      <module name="sti-oskar-marion-service" target="1.8" />
+      <module name="sti-oskar-marion-service-impl" target="1.8" />
+      <module name="sti-oskar-marion-test" target="8" />
+      <module name="sti-oskar-marion-test-unit" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
