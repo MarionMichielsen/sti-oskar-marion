@@ -8,14 +8,16 @@ public class Student {
     private final String lastName;
     private final int id;
     private final String computer;
-    private final List<Course> courses;
+    ArrayList<Course> courses = new ArrayList<Course>() ;
 
-    public Student(String firstName, String lastName, int id, String computer, List<Course> courses) {
+
+
+    public Student(String firstName, String lastName, int id, String computer) {
         this.firstName = Objects.requireNonNull(firstName);
         this.lastName = Objects.requireNonNull(lastName);
         this.id = id;
         this.computer = Objects.requireNonNull(computer);
-        this.courses = Objects.requireNonNull(courses);
+
 
     }
 
@@ -24,7 +26,7 @@ public class Student {
         this.lastName = builder.lastName;
         this.id = builder.id;
         this.computer = builder.computer;
-        this.courses= builder.courses;
+
     }
 
     public List<Course> getCourses() {
@@ -60,7 +62,7 @@ public class Student {
         private String lastName;
         private int id;
         private String computer;
-        private List<Course> courses;
+
 
         public Builder withFirstName(String firstName) {
             this.firstName = firstName;
@@ -79,13 +81,10 @@ public class Student {
             this.computer = computer;
             return this;
         }
-        public Builder withCourses(List<Course> courses) {
-            this.courses = courses;
-            return this;
-        }
+
 
         public Student build() {
-            return new Student(this.firstName, this.lastName, this.id, this.computer, this.courses);
+            return new Student(this.firstName, this.lastName, this.id, this.computer);
         }
     }
 }

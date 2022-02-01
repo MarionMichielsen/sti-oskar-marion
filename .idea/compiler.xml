@@ -7,8 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sti-oskar-marion-test-unit" />
-        <module name="sti-oskar-marion-dao-impl" />
         <module name="sti-oskar-marion-domain" />
+        <module name="sti-oskar-marion-swagger-endpoint" />
+        <module name="sti-oskar-marion-dao-impl" />
         <module name="sti-oskar-marion-service-impl" />
         <module name="sti-oskar-marion-service" />
         <module name="sti-oskar-marion-dao" />
@@ -21,6 +22,8 @@
       <module name="sti-oskar-marion-domain" target="1.8" />
       <module name="sti-oskar-marion-service" target="1.8" />
       <module name="sti-oskar-marion-service-impl" target="1.8" />
+      <module name="sti-oskar-marion-swagger" target="8" />
+      <module name="sti-oskar-marion-swagger-endpoint" target="8" />
       <module name="sti-oskar-marion-test" target="8" />
       <module name="sti-oskar-marion-test-unit" target="1.8" />
     </bytecodeTargetLevel>

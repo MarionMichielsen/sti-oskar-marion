@@ -8,6 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/sti-oskar-marion-domain/sti-oskar-marion-domain.iml" filepath="$PROJECT_DIR$/sti-oskar-marion-domain/sti-oskar-marion-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/sti-oskar-marion-service/sti-oskar-marion-service.iml" filepath="$PROJECT_DIR$/sti-oskar-marion-service/sti-oskar-marion-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/sti-oskar-marion-service-impl/sti-oskar-marion-service-impl.iml" filepath="$PROJECT_DIR$/sti-oskar-marion-service-impl/sti-oskar-marion-service-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sti-oskar-marion-swagger/sti-oskar-marion-swagger.iml" filepath="$PROJECT_DIR$/sti-oskar-marion-swagger/sti-oskar-marion-swagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sti-oskar-marion-swagger/sti-oskar-marion-swagger-endpoint/sti-oskar-marion-swagger-endpoint.iml" filepath="$PROJECT_DIR$/sti-oskar-marion-swagger/sti-oskar-marion-swagger-endpoint/sti-oskar-marion-swagger-endpoint.iml" />
       <module fileurl="file://$PROJECT_DIR$/sti-oskar-marion-test/sti-oskar-marion-test.iml" filepath="$PROJECT_DIR$/sti-oskar-marion-test/sti-oskar-marion-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/sti-oskar-marion-test/sti-oskar-marion-test-unit/sti-oskar-marion-test-unit.iml" filepath="$PROJECT_DIR$/sti-oskar-marion-test/sti-oskar-marion-test-unit/sti-oskar-marion-test-unit.iml" />
     </modules>
