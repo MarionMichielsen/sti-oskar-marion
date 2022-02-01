@@ -13,7 +13,7 @@ public class Student {
     public Student(String firstName, String lastName, int id, String computer, List<Course> courses) {
         this.firstName = Objects.requireNonNull(firstName);
         this.lastName = Objects.requireNonNull(lastName);
-        this.id = Objects.requireNonNull(id);
+        this.id = id;
         this.computer = Objects.requireNonNull(computer);
         this.courses = Objects.requireNonNull(courses);
 
