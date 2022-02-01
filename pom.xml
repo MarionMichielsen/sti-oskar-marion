@@ -39,68 +39,84 @@
     </modules>
 
     <dependencyManagement>
-    <dependencies>
+        <dependencies>
 
-    <!-- project -->
-    <dependency>
-        <groupId>se.sti</groupId>
-        <artifactId>sti-oskar-marion-domain</artifactId>
-        <version>${project.version}</version>
-    </dependency>
+            <!-- project -->
+            <dependency>
+                <groupId>se.sti</groupId>
+                <artifactId>sti-oskar-marion-dao</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
 
-        <dependency>
-            <groupId>se.sti</groupId>
-            <artifactId>sti-oskar-marion-service-impl</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>se.sti</groupId>
+                <artifactId>sti-oskar-marion-dao-impl</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
 
+            <dependency>
+                <groupId>se.sti</groupId>
+                <artifactId>sti-oskar-marion-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
+            <dependency>
+                <groupId>se.sti</groupId>
+                <artifactId>sti-oskar-marion-service-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>se.sti</groupId>
+                <artifactId>sti-oskar-marion-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+            <!-- https://mvnrepository.com/artifact/junit/junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jcl</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
-    </dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jcl</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+        </dependencies>
     </dependencyManagement>
 
     <build>

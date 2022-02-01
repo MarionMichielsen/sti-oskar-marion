@@ -8,6 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: se.sti:sti-oskar-marion-dao:unknown" level="project" />
+    <orderEntry type="module" module-name="sti-oskar-marion-dao" />
+    <orderEntry type="module" module-name="sti-oskar-marion-domain" />
   </component>
 </module>
