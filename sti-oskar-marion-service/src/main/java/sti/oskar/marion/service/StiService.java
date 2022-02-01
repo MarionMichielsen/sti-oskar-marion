@@ -8,12 +8,8 @@ import java.util.List;
 
 public interface StiService {
 
-    Student createStudent(String firstName, String lastName, int id, String computer, List<Course> courses);
-
-    Teacher createTeacher(String firstName, String lastName, int id, List<Course> courses, int salaryPerHour);
-
+    Student createStudent(String firstName, String lastName, int id, String computer);
+    Teacher createTeacher(String firstName, String lastName, int id,  int salaryPerHour);
     Course createCourse (int courseCode, int numOfHours, int YHPoints, Teacher teacher);
-
-
 
 }

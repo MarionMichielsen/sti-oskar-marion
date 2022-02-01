@@ -7,8 +7,8 @@ import java.util.*;
 public class StiServiceImpl implements StiService {
 
     @Override
-    public Student createStudent(String firstName, String lastName, int id, String computer, List<Course> courses){
-        Student student = new Student(firstName, lastName, id, computer,  courses);
+    public Student createStudent(String firstName, String lastName, int id, String computer){
+        Student student = new Student(firstName, lastName, id, computer);
         return student;
     }
 
@@ -19,8 +19,8 @@ public class StiServiceImpl implements StiService {
     }
 
     @Override
-    public Teacher createTeacher(String firstName, String lastName, int id, List<Course> courses, int salaryPerHour){
-        Teacher teacher = new Teacher(firstName, lastName, id, courses, salaryPerHour );
+    public Teacher createTeacher(String firstName, String lastName, int id, int salaryPerHour){
+        Teacher teacher = new Teacher(firstName, lastName, id, salaryPerHour );
         return teacher;
     }
 }

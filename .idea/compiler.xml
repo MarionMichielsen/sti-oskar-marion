@@ -23,7 +23,7 @@
       <module name="sti-oskar-marion-service" target="1.8" />
       <module name="sti-oskar-marion-service-impl" target="1.8" />
       <module name="sti-oskar-marion-swagger" target="8" />
-      <module name="sti-oskar-marion-swagger-endpoint" target="8" />
+      <module name="sti-oskar-marion-swagger-endpoint" target="1.8" />
       <module name="sti-oskar-marion-test" target="8" />
       <module name="sti-oskar-marion-test-unit" target="1.8" />
     </bytecodeTargetLevel>
