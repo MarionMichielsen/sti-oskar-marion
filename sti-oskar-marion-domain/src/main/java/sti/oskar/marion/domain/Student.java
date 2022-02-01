@@ -8,7 +8,7 @@ public class Student {
     private final String lastName;
     private final int id;
     private final String computer;
-    ArrayList<Course> courses = new ArrayList<Course>() ;
+    ArrayList<Course> courses = new ArrayList<Course>();
 
 
 
