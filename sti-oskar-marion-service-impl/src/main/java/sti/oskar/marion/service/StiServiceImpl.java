@@ -4,7 +4,7 @@ import sti.oskar.marion.domain.Course;
 import sti.oskar.marion.domain.Teacher;
 import java.util.*;
 
-public class StiServiceImpl implements stiService {
+public class StiServiceImpl implements StiService {
 
     @Override
     public Student createStudent(String firstName, String lastName, int id, String computer, List<Course> courses){

@@ -6,7 +6,7 @@ import sti.oskar.marion.domain.Teacher;
 
 import java.util.List;
 
-public interface stiService {
+public interface StiService {
 
     Student createStudent(String firstName, String lastName, int id, String computer, List<Course> courses);
     Teacher createTeacher(String firstName, String lastName, int id, List<Course> courses, int salaryPerHour);
