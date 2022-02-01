@@ -16,7 +16,7 @@ public class SwaggerConfiguration {
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("sti.spring.boot.swagger.endpoint"))
+                .apis(RequestHandlerSelectors.basePackage("sti.oskar.marion.swagger.endpoint"))
                 .build();
     }
 

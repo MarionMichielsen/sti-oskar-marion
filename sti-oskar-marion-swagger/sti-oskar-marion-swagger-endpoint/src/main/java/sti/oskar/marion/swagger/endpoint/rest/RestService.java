@@ -35,4 +35,34 @@ public class RestService {
 
         LOGGER.info("RestService created");
     }
+    @GetMapping(("/getStudentNames"))
+    @ApiOperation(value = "Gets the names of all students")
+    public List<String> getStudentNames(){
+        //TODO: refactor Java 7 for-loop to Java 8 stream
+        List<String> studentNames = new ArrayList<>();
+        for(Student student : students){
+            studentNames.add(student.toString());
+        }
+        return studentNames;
+    }
+
+    @GetMapping("/getbygivenname")
+    @ApiOperation(value = "Takes a given name as input")
+    public Student getUserByGivenName(@RequestParam String givenName){
+        Student student = null;
+        for(Student s : students){
+            if(s.getFirstName().equalsIgnoreCase(s.getFirstName())){
+                student = s;
+            }
+        }
+        return student;
+    }
+
+    @PostMapping("/addnewstudent")
+    @ApiOperation(value = "Adds a new student")
+    public void addStudent(@RequestBody Student newStudent){
+        students.add(new Student(newStudent.getFirstName(), newStudent.getLastName(), newStudent.getId(), newStudent.getComputer()));
+    }
+
 }
+
