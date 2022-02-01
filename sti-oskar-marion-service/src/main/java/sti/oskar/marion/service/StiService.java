@@ -9,7 +9,11 @@ import java.util.List;
 public interface StiService {
 
     Student createStudent(String firstName, String lastName, int id, String computer, List<Course> courses);
+
     Teacher createTeacher(String firstName, String lastName, int id, List<Course> courses, int salaryPerHour);
+
     Course createCourse (int courseCode, int numOfHours, int YHPoints, Teacher teacher);
+
+
 
 }
