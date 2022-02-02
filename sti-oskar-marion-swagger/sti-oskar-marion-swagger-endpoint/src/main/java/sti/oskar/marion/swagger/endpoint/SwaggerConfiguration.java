@@ -24,5 +24,4 @@ public class SwaggerConfiguration {
                 .apis(RequestHandlerSelectors.basePackage("sti.oskar.marion.swagger.endpoint"))
                 .build();
     }
-
 }

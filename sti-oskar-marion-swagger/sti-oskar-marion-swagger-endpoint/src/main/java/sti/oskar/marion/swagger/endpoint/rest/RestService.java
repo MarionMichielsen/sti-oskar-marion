@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import sti.oskar.marion.domain.Student;
 import sti.oskar.marion.domain.Teacher;
 import sti.oskar.marion.domain.Course;
+import sti.oskar.marion.service.StiServiceImpl;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,9 @@ import java.util.List;
 public class RestService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestService.class);
+    private final ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+            "classpath:sti-oskar.marion-service.xml");
+
 
     private static List<Student> students;
     private static List<Teacher> teachers;
@@ -81,8 +85,13 @@ public class RestService {
 
     @PostMapping("/addnewstudent")
     @ApiOperation(value = "Adds a new student")
-    public void createStudent(@RequestBody Student newStudent) {
-        students.add(new Student(newStudent.getFirstName(), newStudent.getLastName(), newStudent.getId(), newStudent.getComputer()));
+    public void createStudent(
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            @RequestParam int id,
+            @RequestParam String computer) {
+
+        students.add(new Student( firstName, lastName, id, computer));
     }
 
     @PostMapping("/addnewteacher")
