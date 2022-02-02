@@ -1,6 +1,8 @@
-sti\oskar\marion\domain\Teacher$Builder.class
 sti\oskar\marion\domain\Student$Builder.class
+sti\oskar\marion\domain\Teacher$Builder.class
+sti\oskar\marion\domain\Vault.class
 sti\oskar\marion\domain\Student.class
 sti\oskar\marion\domain\Teacher.class
 sti\oskar\marion\domain\Course$Builder.class
+sti\oskar\marion\domain\App.class
 sti\oskar\marion\domain\Course.class

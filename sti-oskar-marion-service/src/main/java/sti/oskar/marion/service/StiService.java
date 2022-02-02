@@ -10,7 +10,8 @@ public interface StiService {
 
     Student createStudent(String firstName, String lastName, int id, String computer);
     Teacher createTeacher(String firstName, String lastName, int id,  int salaryPerHour);
-    Course createCourse (int courseCode, int numOfHours, int YHPoints, Teacher teacher);
+    Course createCourse (String name, int courseCode, int numOfHours, int YHPoints, Teacher teacher);
+
+
 
 }
-prop

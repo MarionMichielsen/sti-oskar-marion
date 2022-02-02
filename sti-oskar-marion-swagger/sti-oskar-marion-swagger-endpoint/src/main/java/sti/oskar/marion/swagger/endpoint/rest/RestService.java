@@ -4,6 +4,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
 import sti.oskar.marion.domain.Student;
 import sti.oskar.marion.domain.Teacher;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import sti.oskar.marion.service.StiService;
 
 
 import java.util.ArrayList;
@@ -26,13 +29,18 @@ import java.util.List;
 @RequestMapping("/api/service")
 public class RestService {
 
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:sti-oskar-marion-service.xml");
     private static final Logger LOGGER = LoggerFactory.getLogger(RestService.class);
 
     private static List<Student> students;
     private static List<Teacher> teachers;
+    private StiService stiService;
+
 
 
     public RestService(){
+        stiService = (StiService)applicationContext.getBean("stiService");
+
         students = Arrays.asList(
                 new Student("Nasir", "Tedros", 124, "Apple"),
                 new Student ("Oskar", "Wadin", 92284, "Windows"),
@@ -79,8 +87,13 @@ public class RestService {
 
     @PostMapping("/addnewstudent")
     @ApiOperation(value = "Adds a new student")
-    public void createStudent(@RequestBody Student newStudent) {
-        students.add(new Student(newStudent.getFirstName(), newStudent.getLastName(), newStudent.getId(), newStudent.getComputer()));
+    public void createStudent(
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            @RequestParam int id,
+            @RequestParam String computer ) {
+        stiService.createStudent(firstName, lastName, id, computer);
+      //  students.add(new Student(newStudent.getFirstName(), newStudent.getLastName(), newStudent.getId(), newStudent.getComputer()));
     }
 
     @PostMapping("/addnewteacher")

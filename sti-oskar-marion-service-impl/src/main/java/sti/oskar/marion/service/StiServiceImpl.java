@@ -6,6 +6,8 @@ import java.util.*;
 
 public class StiServiceImpl implements StiService {
 
+
+
     @Override
     public Student createStudent(String firstName, String lastName, int id, String computer){
         Student student = new Student(firstName, lastName, id, computer);
@@ -13,8 +15,8 @@ public class StiServiceImpl implements StiService {
     }
 
     @Override
-    public Course createCourse(int courseCode, int numOfHours, int YHPoints, Teacher teacher){
-        Course course = new Course ( courseCode, numOfHours, YHPoints, teacher);
+    public Course createCourse(String  name, int courseCode, int numOfHours, int YHPoints, Teacher teacher){
+        Course course = new Course ( name, courseCode, numOfHours, YHPoints, teacher);
         return course;
     }
 

@@ -4,18 +4,21 @@ import java.util.Objects;
 
 public class Course {
 
+    private final String name;
     private final int courseCode;
     private final int numOfHours;
     private final int YHPoints;
     private final Teacher teacher;
 
-    public Course(int courseCode, int numOfHours, int YHPoints, Teacher teacher) {
+    public Course(String name, int courseCode, int numOfHours, int YHPoints, Teacher teacher) {
+        this.name=name;
         this.courseCode = courseCode;
         this.numOfHours = numOfHours;
         this.YHPoints = YHPoints;
         this.teacher = Objects.requireNonNull(teacher);
     }
 
+    public String getName(){ return name; }
     public int getCourseCode() {
         return courseCode;
     }
@@ -33,6 +36,7 @@ public class Course {
     }
 
     public Course(Builder builder) {
+        this.name= builder.name;
         this.courseCode = builder.courseCode;
         this.YHPoints = builder.YHPoints;
         this.numOfHours = builder.numOfHours;
@@ -49,11 +53,16 @@ public class Course {
     }
 
     public static class Builder {
-
+        private String name;
         private int courseCode;
         private int numOfHours;
         private int YHPoints;
         private Teacher teacher;
+
+        public Course.Builder withName(String name){
+            this.name=name;
+            return this;
+        }
 
         public Course.Builder withCourseCode(int courseCode) {
             this.courseCode = courseCode;
@@ -76,7 +85,7 @@ public class Course {
         }
 
         public Course build() {
-            return new Course(this.courseCode, this.numOfHours, this.YHPoints, this.teacher);
+            return new Course(this.name, this.courseCode, this.numOfHours, this.YHPoints, this.teacher);
         }
 
 

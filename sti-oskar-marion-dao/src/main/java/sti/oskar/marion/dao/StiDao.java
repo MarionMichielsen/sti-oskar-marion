@@ -12,7 +12,7 @@ public interface StiDao {
 
 
     Student createStudent(String firstName, String lastName, int id, String computer);
-    Course createCourse(int courseCode, int numOfHours, int YHPoints, Teacher teacher);
+    Course createCourse(String name, int courseCode, int numOfHours, int YHPoints, Teacher teacher);
     Teacher createTeacher(String firstName, String lastName, int id, int salaryPerHour);
 
   //  boolean deleteStudent(String firstName, String lastName, int id, String computer);

@@ -41,21 +41,22 @@ public class StiDaoImpl implements StiDao{
         return new Student(firstName, lastName, id, computer);
     }
     @Override
-    public Course createCourse(int courseCode, int numOfHours, int YHPoints, Teacher teacher){
+    public Course createCourse(String name, int courseCode, int numOfHours, int YHPoints, Teacher teacher){
         try{
             conn = getConnection();
-            preparedStatement =conn.prepareStatement("INSERT INTO course ( courseCode, numOfHours,YHPoints, teacher) VALUES( ?, ?,?,?)");
+            preparedStatement =conn.prepareStatement("INSERT INTO course ( name, courseCode, numOfHours,YHPoints, teacher) VALUES( ?, ?,?,?)");
 
-            preparedStatement.setInt(1, courseCode);
-            preparedStatement.setInt(2, numOfHours);
-            preparedStatement.setInt(3, YHPoints);
-            preparedStatement.setInt(4, teacher.getId());
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, courseCode);
+            preparedStatement.setInt(3, numOfHours);
+            preparedStatement.setInt(4, YHPoints);
+            preparedStatement.setInt(5, teacher.getId());
 
             result = preparedStatement.executeUpdate();
         }catch (SQLException e){
             System.out.println(e);
         }
-        return new Course(courseCode, numOfHours, YHPoints, teacher);
+        return new Course(name, courseCode, numOfHours, YHPoints, teacher);
     }
 
     @Override
