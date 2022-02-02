@@ -153,24 +153,6 @@ public class RestService {
         else if (student != null && course != null)
             stiService.addCourseToStudent(course, student);
     }
-
-/*
-    @GetMapping("/getStudentbyfirstName")
-    @ApiOperation(value = "Takes a given name as input and returns the student information")
-    public Student getStudentbyFirstName(@RequestParam String firstName) {
-        Student student = null;
-        for (Student s : students) {
-            if (s.getFirstName().equalsIgnoreCase(firstName)) {
-                student = s;
-            }
-        }
-    /*Skicka meddelande "Vilken kurs vill du lägga till?"
-    Ange kurs course name och så vidare.
-    student.addCourseToStudent
-        return student;
-    }
-     */
-
-    }
+}
 
 

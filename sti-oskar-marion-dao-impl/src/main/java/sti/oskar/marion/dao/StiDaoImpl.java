@@ -1,20 +1,19 @@
 package sti.oskar.marion.dao;
 
-import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import sti.oskar.marion.domain.Course;
 import sti.oskar.marion.domain.Student;
 import sti.oskar.marion.domain.Teacher;
-import sti.oskar.marion.domain.Course;
-import sti.oskar.marion.service.StiService;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class StiDaoImpl<stiService> implements StiDao{
@@ -81,12 +80,11 @@ public class StiDaoImpl<stiService> implements StiDao{
     public Student createStudent(String firstName, String lastName, int id, String computer){
         try{
             conn = getConnection();
-            preparedStatement =conn.prepareStatement("INSERT INTO student ( id, firstName, lastName, computer) VALUES( ?, ?,?,?)");
-
+            preparedStatement =conn.prepareStatement
+                    ("INSERT INTO student (firstName, lastName, id, computer) VALUES(?, ?, ?, ?)");
             preparedStatement.setInt(1, id);
             preparedStatement.setString(2, firstName);
             preparedStatement.setString(3, lastName);
-
             preparedStatement.setString(4, computer);
 
             result = preparedStatement.executeUpdate();
@@ -95,16 +93,24 @@ public class StiDaoImpl<stiService> implements StiDao{
         }
         return new Student(firstName, lastName, id, computer);
     }
+
+    /*@Override
+    public Course createCourse(String name, int courseCode, int numOfHours, int YHPoints, Teacher teacher) {
+        return null;
+        // Det blev något underligt med kodblocket nedan så jag kommenterade ut detta block.
+    }*/
+
     @Override
-    public Course createCourse(int courseCode, int numOfHours, int YHPoints, Teacher teacher){
+    public Course createCourse(String name, int courseCode, int numOfHours, int YHPoints, Teacher teacher){
         try{
             conn = getConnection();
-            preparedStatement =conn.prepareStatement("INSERT INTO course ( courseCode, numOfHours,YHPoints, teacher) VALUES( ?, ?,?,?)");
-
-            preparedStatement.setInt(1, courseCode);
-            preparedStatement.setInt(2, numOfHours);
-            preparedStatement.setInt(3, YHPoints);
-            preparedStatement.setInt(4, teacher.getId());
+            preparedStatement =conn.prepareStatement
+                    ("INSERT INTO course (name, courseCode, numOfHours,YHPoints, teacher) VALUES(?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, courseCode);
+            preparedStatement.setInt(3, numOfHours);
+            preparedStatement.setInt(4, YHPoints);
+            preparedStatement.setInt(5, teacher.getId());
 
             result = preparedStatement.executeUpdate();
         }catch (SQLException e){
