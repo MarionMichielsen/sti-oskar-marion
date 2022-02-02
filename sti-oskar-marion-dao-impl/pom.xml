@@ -28,6 +28,12 @@
             <groupId>se.sti</groupId>
             <artifactId>sti-oskar-marion-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 </project>

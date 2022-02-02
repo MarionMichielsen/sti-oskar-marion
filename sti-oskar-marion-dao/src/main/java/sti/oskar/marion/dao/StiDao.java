@@ -4,6 +4,7 @@ import sti.oskar.marion.domain.Teacher;
 import sti.oskar.marion.domain.Course;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface StiDao {
 
@@ -16,7 +17,7 @@ public interface StiDao {
     Teacher createTeacher(String firstName, String lastName, int id, int salaryPerHour);
 
     public void loadStudents() throws SQLException;
-    public void getStudents();
+    public List<String> getStudentNames();
 
   //  boolean deleteStudent(String firstName, String lastName, int id, String computer);
   //  boolean deleteTeacher(String firstName, String lastName, int id, int salaryPerHour);

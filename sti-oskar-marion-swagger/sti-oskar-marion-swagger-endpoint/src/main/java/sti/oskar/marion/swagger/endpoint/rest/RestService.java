@@ -76,17 +76,26 @@ public class RestService {
 
         LOGGER.info("RestService created");
     }
-
+/*
     @GetMapping(("/getStudentNames"))
     @ApiOperation(value = "Gets the names of all students")
+    List<String> studentNames = new ArrayList<>();
+        sti
+        studentNames.add(student.toString());
+    }
+        return studentNames;
+
+
+
+
     public List<String> getStudentNames() {
         //TODO: refactor Java 7 for-loop to Java 8 stream
         List<String> studentNames = new ArrayList<>();
-        for (Student student : students) {
+        for (Student student : stiDaoImpl.getStudents()) {
             studentNames.add(student.toString());
         }
-        return studentNames;
-    }
+        return studentNames;*/
+
 
 
     @GetMapping("/getStudentbyfirstName")

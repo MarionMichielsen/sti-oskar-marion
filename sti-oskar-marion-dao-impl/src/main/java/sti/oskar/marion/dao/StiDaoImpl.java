@@ -1,8 +1,8 @@
 package sti.oskar.marion.dao;
 
 import java.util.*;
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sti.oskar.marion.domain.Student;
@@ -67,13 +67,12 @@ public class StiDaoImpl<stiService> implements StiDao{
 
 }
     @Override
-    public void getStudents() {
+    public List<String> getStudentNames() {
+        List<String> studentNames = new ArrayList<>();
         for (Student s: students){
-            System.out.println(s.getFirstName()+" "+s.getLastName());
-            for (Course c: s.getCourses()){
-                System.out.println(c.getName());
-            }
+            studentNames.add(s.getFirstName()+" "+s.getLastName());
         }
+        return studentNames;
 
 
     }
