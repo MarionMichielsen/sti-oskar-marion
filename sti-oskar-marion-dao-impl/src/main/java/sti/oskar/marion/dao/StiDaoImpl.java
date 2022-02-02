@@ -40,7 +40,7 @@ public class StiDaoImpl<stiService> implements StiDao{
     public void loadStudents()throws SQLException{
         Connection con = null;
         try {
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Chinook", "sti", "sti");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/stidb", "sti", "sti");
             ResultSet rs = null;
             rs = con.createStatement().executeQuery("SELECT * FROM student");
             while (rs.next()) {
