@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import sti.oskar.marion.domain.Student;
 import sti.oskar.marion.domain.Teacher;
 import sti.oskar.marion.domain.Course;
+import sti.oskar.marion.service.StiService;
 import sti.oskar.marion.service.StiServiceImpl;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static sti.oskar.marion.domain.Student.courses;
+
 @Api(value = "Student, Teacher, Course Controller")
 @RestController
 @RequestMapping("/api/service")
@@ -31,14 +34,17 @@ public class RestService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestService.class);
     private final ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-            "classpath:sti-oskar.marion-service.xml");
-
+            "classpath:sti-oskar-marion-service.xml");
+    private static StiService stiService;
 
     private static List<Student> students;
     private static List<Teacher> teachers;
-
+    private static List<Course> courses;
 
     public RestService(){
+
+        stiService = (StiService) applicationContext.getBean("stiServiceBean");
+
         students = Arrays.asList(
                 new Student("Nasir", "Tedros", 124, "Apple"),
                 new Student ("Oskar", "Wadin", 92284, "Windows"),
@@ -48,6 +54,7 @@ public class RestService {
                 new Teacher("Sven" , "Kramer", 8783, 250),
                 new Teacher("Ireen", "Wust", 2132, 700),
                 new Teacher ("Patrik", "Roest", 2563, 1220));
+    ;
 
         /*        Student.builder()
                         .withFirstName("Max")
@@ -91,8 +98,9 @@ public class RestService {
             @RequestParam int id,
             @RequestParam String computer) {
 
-        students.add(new Student( firstName, lastName, id, computer));
-    }
+        ;
+        students.add(stiService.createStudent( firstName, lastName, id, computer));
+           }
 
     @PostMapping("/addnewteacher")
     @ApiOperation(value = "Adds a new Teacher")
@@ -101,8 +109,46 @@ public class RestService {
                               @RequestParam int id,
                               @RequestParam int salaryPerHour)
     {
-        teachers.add(new Teacher(firstName, lastName, id, salaryPerHour ));
+        teachers.add(stiService.createTeacher(firstName, lastName, id, salaryPerHour));
     }
+    @PostMapping("/addcoursetostudent")
+    @ApiOperation(value = "Adds a course to an existing student")
+    public void addCourseToStudent(@RequestParam String firstName,
+                              @RequestParam String name) {
+        Student student = null;
+        Course course = null;
+        for(Student s : students){
+            if(s.getFirstName().equalsIgnoreCase(firstName)){
+                student = s;
+            }
+        }
+        for(Course c: courses){
+            if(c.getName().equalsIgnoreCase(name)){
+                course = c;
+            }
+        }
+        if (student == null || course == null)
+            System.out.println("That course or student did not exist.");
+         else if (student != null && course != null)
+        stiService.addCourseToStudent( course, student);
+    }
+
+    /*
+    @GetMapping("/getStudentbyfirstName")
+    @ApiOperation(value = "Takes a given name as input and returns the student information")
+    public Student getStudentbyFirstName(@RequestParam String firstName){
+        Student student = null;
+        for(Student s : students){
+            if(s.getFirstName().equalsIgnoreCase(firstName)){
+                student = s;
+            }
+        }
+    Skicka meddelande "Vilken kurs vill du lägga till?"
+    Ange kurs course name och så vidare.
+    student.addCourseToStudent
+        return student;
+    }
+     */
 
 }
 

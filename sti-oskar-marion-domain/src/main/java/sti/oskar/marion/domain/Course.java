@@ -18,7 +18,9 @@ public class Course {
         this.teacher = Objects.requireNonNull(teacher);
     }
 
-    public String getName( ){
+
+
+    public String getName(){
         return name;
     }
 

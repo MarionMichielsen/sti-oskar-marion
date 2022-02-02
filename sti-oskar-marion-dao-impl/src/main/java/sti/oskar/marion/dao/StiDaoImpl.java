@@ -55,7 +55,7 @@ public class StiDaoImpl implements StiDao{
         }catch (SQLException e){
             System.out.println(e);
         }
-        return new Course(courseCode, numOfHours, YHPoints, teacher);
+        return new Course(name, courseCode, numOfHours, YHPoints, teacher);
     }
 
     @Override

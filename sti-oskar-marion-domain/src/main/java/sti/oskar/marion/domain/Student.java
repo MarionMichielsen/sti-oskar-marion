@@ -8,7 +8,7 @@ public class Student {
     private final String lastName;
     private final int id;
     private final String computer;
-    ArrayList<Course> courses = new ArrayList<Course>();
+    public static List<Course> courses = new ArrayList<Course>();
 
 
 
@@ -17,8 +17,6 @@ public class Student {
         this.lastName = Objects.requireNonNull(lastName);
         this.id = id;
         this.computer = Objects.requireNonNull(computer);
-
-
     }
 
     public Student(Builder builder){
@@ -29,9 +27,13 @@ public class Student {
 
     }
 
-    public List<Course> getCourses() {
+    public static List<Course> getCourses() {
         return courses;
     }
+    public void setCourses(){
+        this.courses=courses;
+    }
+
 
     public String getLastName() {
         return lastName;
