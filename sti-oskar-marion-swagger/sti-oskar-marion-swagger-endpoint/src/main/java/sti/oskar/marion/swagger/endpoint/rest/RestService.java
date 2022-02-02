@@ -1,17 +1,25 @@
 package sti.oskar.marion.swagger.endpoint.rest;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import sti.oskar.marion.domain.Student;
-/*import sti.spring.boot.swagger.endpoint.domain.Student;*/
+import java.util.stream.Collectors;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import sti.oskar.marion.domain.Teacher;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Api(value = "Student, Teacher, Course Controller")
 @RestController
 @RequestMapping("/api/service")
 public class RestService {
@@ -19,12 +27,19 @@ public class RestService {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestService.class);
 
     private static List<Student> students;
+    private static List<Teacher> teachers;
+
 
     public RestService(){
         students = Arrays.asList(
                 new Student("Nasir", "Tedros", 124, "Apple"),
                 new Student ("Oskar", "Wadin", 92284, "Windows"),
                 new Student("Luliya", "Masfun", 429, "Asus"));
+
+        teachers=Arrays.asList(
+                new Teacher("Sven" , "Kramer", 8783, 250),
+                new Teacher("Ireen", "Wust", 2132, 700),
+                new Teacher ("Patrik", "Roest", 2563, 1220));
 
         /*        Student.builder()
                         .withFirstName("Max")
@@ -35,6 +50,7 @@ public class RestService {
 
         LOGGER.info("RestService created");
     }
+
     @GetMapping(("/getStudentNames"))
     @ApiOperation(value = "Gets the names of all students")
     public List<String> getStudentNames(){
@@ -46,12 +62,13 @@ public class RestService {
         return studentNames;
     }
 
-    @GetMapping("/getbygivenname")
-    @ApiOperation(value = "Takes a given name as input")
-    public Student getUserByGivenName(@RequestParam String givenName){
+
+    @GetMapping("/getStudentbyfirstName")
+    @ApiOperation(value = "Takes a given name as input and returns the student information")
+    public Student getStudentbyFirstName(@RequestParam String firstName){
         Student student = null;
         for(Student s : students){
-            if(s.getFirstName().equalsIgnoreCase(s.getFirstName())){
+            if(s.getFirstName().equalsIgnoreCase(firstName)){
                 student = s;
             }
         }
@@ -60,8 +77,14 @@ public class RestService {
 
     @PostMapping("/addnewstudent")
     @ApiOperation(value = "Adds a new student")
-    public void addStudent(@RequestBody Student newStudent){
+    public void createStudent(@RequestBody Student newStudent) {
         students.add(new Student(newStudent.getFirstName(), newStudent.getLastName(), newStudent.getId(), newStudent.getComputer()));
+    }
+
+    @PostMapping("/addnewteacher")
+    @ApiOperation(value = "Adds a new Teacher")
+    public void createTeacher(@RequestBody Teacher newTeacher){
+        teachers.add(new Teacher(newTeacher.getFirstName(), newTeacher.getLastName(), newTeacher.getId(), newTeacher.getSalaryPerHour()));
     }
 
 }

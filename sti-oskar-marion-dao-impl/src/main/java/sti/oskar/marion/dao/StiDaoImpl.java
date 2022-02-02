@@ -17,17 +17,21 @@ public class StiDaoImpl implements StiDao{
     @Override
     public Connection getConnection() throws SQLException{
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/sti", "root", "root");
+       // loadStudents(con);
+      //  loadTeachers(con);
+     //   loadCourses(con);
     }
 
     @Override
     public Student createStudent(String firstName, String lastName, int id, String computer){
         try{
             conn = getConnection();
-            preparedStatement =conn.prepareStatement("INSERT INTO student ( firstName, lastName, id, computer) VALUES( ?, ?,?,?)");
+            preparedStatement =conn.prepareStatement("INSERT INTO student ( id, firstName, lastName, computer) VALUES( ?, ?,?,?)");
 
-            preparedStatement.setString(1, firstName);
-            preparedStatement.setString(2, lastName);
-            preparedStatement.setInt(3, id);
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, firstName);
+            preparedStatement.setString(3, lastName);
+
             preparedStatement.setString(4, computer);
 
             result = preparedStatement.executeUpdate();

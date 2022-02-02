@@ -9,6 +9,8 @@ public interface StiDao {
 
     Connection getConnection() throws SQLException;
 
+
+
     Student createStudent(String firstName, String lastName, int id, String computer);
     Course createCourse(int courseCode, int numOfHours, int YHPoints, Teacher teacher);
     Teacher createTeacher(String firstName, String lastName, int id, int salaryPerHour);
