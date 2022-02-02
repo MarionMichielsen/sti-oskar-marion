@@ -6,11 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import sti.oskar.marion.domain.Student;
+import sti.oskar.marion.domain.Teacher;
+import sti.oskar.marion.domain.Course;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sti.oskar.marion.domain.Teacher;
+
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 

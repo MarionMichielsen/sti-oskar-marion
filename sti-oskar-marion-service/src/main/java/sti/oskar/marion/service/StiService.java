@@ -13,3 +13,4 @@ public interface StiService {
     Course createCourse (int courseCode, int numOfHours, int YHPoints, Teacher teacher);
 
 }
+prop

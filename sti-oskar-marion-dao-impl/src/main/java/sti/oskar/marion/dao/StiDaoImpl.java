@@ -16,7 +16,7 @@ public class StiDaoImpl implements StiDao{
 
     @Override
     public Connection getConnection() throws SQLException{
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/sti", "root", "root");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/stidb", "root", "root");
        // loadStudents(con);
       //  loadTeachers(con);
      //   loadCourses(con);
