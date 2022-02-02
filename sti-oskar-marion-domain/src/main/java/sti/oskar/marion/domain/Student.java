@@ -1,6 +1,7 @@
 package sti.oskar.marion.domain;
 import java.util.*;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Student {
 
@@ -9,6 +10,7 @@ public class Student {
     private final int id;
     private final String computer;
     public static List<Course> courses = new ArrayList<Course>();
+
 
 
 
@@ -26,6 +28,7 @@ public class Student {
         this.computer = builder.computer;
 
     }
+
 
     public static List<Course> getCourses() {
         return courses;

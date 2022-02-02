@@ -1,5 +1,8 @@
 package sti.oskar.marion.dao;
 
+import java.util.*;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sti.oskar.marion.domain.Student;
@@ -7,23 +10,71 @@ import sti.oskar.marion.domain.Teacher;
 import sti.oskar.marion.domain.Course;
 import sti.oskar.marion.service.StiService;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+
 import java.sql.*;
 
 
 public class StiDaoImpl<stiService> implements StiDao{
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(StiDaoImpl.class);
     Connection conn = null;
     PreparedStatement preparedStatement = null;
     ResultSet rs = null;
     int result = 0;
+  //  private static final ConcurrentHashMap<Integer, Student> studentshashmap = new ConcurrentHashMap();
+    private static final List<Student> students = new ArrayList<>();
     private final ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
             "classpath:sti-oskar-marion-service.xml");
 
 
-
     @Override
     public Connection getConnection() throws SQLException{
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/stidb", "root", "root");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/stidb", "sti", "sti");
+
+    }
+
+    @Override
+    public void loadStudents()throws SQLException{
+        Connection con = null;
+        try {
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Chinook", "sti", "sti");
+            ResultSet rs = null;
+            rs = con.createStatement().executeQuery("SELECT * FROM student");
+            while (rs.next()) {
+                Integer id = rs.getInt("Id");
+                String firstName = rs.getString("FirstName");
+                String lastName = rs.getString("LastName");
+                String computer = rs.getString("Computer");
+                Student student = new Student(firstName, lastName, id, computer);
+                students.add(student);
+            }
+            rs.close();
+
+    } catch (SQLException e) {
+        LOGGER.warn("Unable to load data from mysql!", e);
+    } finally {
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException ignore) {
+                LOGGER.warn("Unable to close connection!", ignore);
+            }
+        }
+    }
+
+}
+    @Override
+    public void getStudents() {
+        for (Student s: students){
+            System.out.println(s.getFirstName()+" "+s.getLastName());
+            for (Course c: s.getCourses()){
+                System.out.println(c.getName());
+            }
+        }
+
 
     }
 
@@ -81,6 +132,7 @@ public class StiDaoImpl<stiService> implements StiDao{
         }
         return new Teacher(firstName, lastName, id, salaryPerHour);
     }
+
 
 
 

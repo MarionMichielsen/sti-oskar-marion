@@ -13,6 +13,9 @@ import sti.oskar.marion.domain.Teacher;
 import sti.oskar.marion.domain.Course;
 import sti.oskar.marion.service.StiService;
 import sti.oskar.marion.service.StiServiceImpl;
+
+import java.sql.SQLException;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,13 +47,17 @@ public class RestService {
     private static List<Teacher> teachers;
     private static List<Course> courses;
 
-    public RestService() {
+
+    public RestService() throws SQLException {
 
         stiService = (StiService) applicationContext.getBean("stiServiceBean");
         stiDaoImpl = (StiDaoImpl) applicationContext.getBean("stiDaoBean");
 
+        stiDaoImpl.loadStudents();
+
+
         students = Arrays.asList(
-                new Student("Nasir", "Tedros", 124, "Apple"),
+                new Student("Nasir", "Tedros", 8921, "Apple"),
                 new Student("Oskar", "Wadin", 92284, "Windows"),
                 new Student("Luliya", "Masfun", 429, "Asus"));
 

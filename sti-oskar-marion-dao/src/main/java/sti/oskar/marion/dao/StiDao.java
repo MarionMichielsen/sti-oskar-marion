@@ -15,6 +15,9 @@ public interface StiDao {
     Course createCourse(String name, int courseCode, int numOfHours, int YHPoints, Teacher teacher);
     Teacher createTeacher(String firstName, String lastName, int id, int salaryPerHour);
 
+    public void loadStudents() throws SQLException;
+    public void getStudents();
+
   //  boolean deleteStudent(String firstName, String lastName, int id, String computer);
   //  boolean deleteTeacher(String firstName, String lastName, int id, int salaryPerHour);
   //  boolean deleteCourse(int courseCode, int numOfHours, int YHPoints, Teacher teacher);
