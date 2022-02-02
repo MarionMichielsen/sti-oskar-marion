@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
+import sti.oskar.marion.dao.StiDaoImpl;
 import sti.oskar.marion.domain.Student;
 import sti.oskar.marion.domain.Teacher;
 import sti.oskar.marion.domain.Course;
@@ -34,27 +35,30 @@ public class RestService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestService.class);
     private final ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-            "classpath:sti-oskar-marion-service.xml");
+            "classpath:sti-oskar-marion-service.xml", "classpath: sti-oskar-marion-dao.xml");
     private static StiService stiService;
+    private static StiDaoImpl stiDaoImpl;
+
 
     private static List<Student> students;
     private static List<Teacher> teachers;
     private static List<Course> courses;
 
-    public RestService(){
+    public RestService() {
 
         stiService = (StiService) applicationContext.getBean("stiServiceBean");
+        stiDaoImpl = (StiDaoImpl) applicationContext.getBean("stiDaoBean");
 
         students = Arrays.asList(
                 new Student("Nasir", "Tedros", 124, "Apple"),
-                new Student ("Oskar", "Wadin", 92284, "Windows"),
+                new Student("Oskar", "Wadin", 92284, "Windows"),
                 new Student("Luliya", "Masfun", 429, "Asus"));
 
         teachers=Arrays.asList(
                 new Teacher("Sven" , "Kramer", 8783, 250),
                 new Teacher("Ireen", "Wust", 2132, 700),
-                new Teacher ("Patrik", "Roest", 2563, 1220));
-    ;
+                new Teacher("Patrik", "Roest", 2563, 1220));
+        ;
 
         /*        Student.builder()
                         .withFirstName("Max")
@@ -68,10 +72,10 @@ public class RestService {
 
     @GetMapping(("/getStudentNames"))
     @ApiOperation(value = "Gets the names of all students")
-    public List<String> getStudentNames(){
+    public List<String> getStudentNames() {
         //TODO: refactor Java 7 for-loop to Java 8 stream
         List<String> studentNames = new ArrayList<>();
-        for(Student student : students){
+        for (Student student : students) {
             studentNames.add(student.toString());
         }
         return studentNames;
@@ -80,10 +84,10 @@ public class RestService {
 
     @GetMapping("/getStudentbyfirstName")
     @ApiOperation(value = "Takes a given name as input and returns the student information")
-    public Student getStudentbyFirstName(@RequestParam String firstName){
+    public Student getStudentbyFirstName(@RequestParam String firstName) {
         Student student = null;
-        for(Student s : students){
-            if(s.getFirstName().equalsIgnoreCase(firstName)){
+        for (Student s : students) {
+            if (s.getFirstName().equalsIgnoreCase(firstName)) {
                 student = s;
             }
         }
@@ -98,57 +102,59 @@ public class RestService {
             @RequestParam int id,
             @RequestParam String computer) {
 
-        ;
-        students.add(stiService.createStudent( firstName, lastName, id, computer));
-           }
+
+        stiService.createStudent(firstName, lastName, id, computer);
+        stiDaoImpl.createStudent(firstName, lastName, id, computer);
+    }
 
     @PostMapping("/addnewteacher")
     @ApiOperation(value = "Adds a new Teacher")
     public void createTeacher(@RequestParam String firstName,
                               @RequestParam String lastName,
                               @RequestParam int id,
-                              @RequestParam int salaryPerHour)
-    {
+                              @RequestParam int salaryPerHour) {
         teachers.add(stiService.createTeacher(firstName, lastName, id, salaryPerHour));
     }
+
     @PostMapping("/addcoursetostudent")
     @ApiOperation(value = "Adds a course to an existing student")
     public void addCourseToStudent(@RequestParam String firstName,
-                              @RequestParam String name) {
+                                   @RequestParam String name) {
         Student student = null;
         Course course = null;
-        for(Student s : students){
-            if(s.getFirstName().equalsIgnoreCase(firstName)){
+        for (Student s : students) {
+            if (s.getFirstName().equalsIgnoreCase(firstName)) {
                 student = s;
             }
         }
-        for(Course c: courses){
-            if(c.getName().equalsIgnoreCase(name)){
+        for (Course c : courses) {
+            if (c.getName().equalsIgnoreCase(name)) {
                 course = c;
             }
         }
         if (student == null || course == null)
             System.out.println("That course or student did not exist.");
-         else if (student != null && course != null)
-        stiService.addCourseToStudent( course, student);
+        else if (student != null && course != null)
+            stiService.addCourseToStudent(course, student);
     }
 
-    /*
+/*
     @GetMapping("/getStudentbyfirstName")
     @ApiOperation(value = "Takes a given name as input and returns the student information")
-    public Student getStudentbyFirstName(@RequestParam String firstName){
+    public Student getStudentbyFirstName(@RequestParam String firstName) {
         Student student = null;
-        for(Student s : students){
-            if(s.getFirstName().equalsIgnoreCase(firstName)){
+        for (Student s : students) {
+            if (s.getFirstName().equalsIgnoreCase(firstName)) {
                 student = s;
             }
         }
-    Skicka meddelande "Vilken kurs vill du lägga till?"
+    /*Skicka meddelande "Vilken kurs vill du lägga till?"
     Ange kurs course name och så vidare.
     student.addCourseToStudent
         return student;
     }
      */
 
-}
+    }
+
 

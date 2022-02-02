@@ -1,25 +1,30 @@
 package sti.oskar.marion.dao;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sti.oskar.marion.domain.Student;
 import sti.oskar.marion.domain.Teacher;
 import sti.oskar.marion.domain.Course;
+import sti.oskar.marion.service.StiService;
 
 import java.sql.*;
 
 
-public class StiDaoImpl implements StiDao{
+public class StiDaoImpl<stiService> implements StiDao{
 
     Connection conn = null;
     PreparedStatement preparedStatement = null;
     ResultSet rs = null;
     int result = 0;
+    private final ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+            "classpath:sti-oskar-marion-service.xml");
+
+
 
     @Override
     public Connection getConnection() throws SQLException{
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/stidb", "root", "root");
-       // loadStudents(con);
-      //  loadTeachers(con);
-     //   loadCourses(con);
+
     }
 
     @Override
@@ -57,6 +62,7 @@ public class StiDaoImpl implements StiDao{
         }
         return new Course(name, courseCode, numOfHours, YHPoints, teacher);
     }
+
 
     @Override
     public Teacher createTeacher(String firstName, String lastName, int id, int salaryPerHour){
