@@ -28,6 +28,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="sti-oskar-marion-service" />
     <orderEntry type="module" module-name="sti-oskar-marion-domain" />
+    <orderEntry type="module" module-name="sti-oskar-marion-service-impl" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:20.0" level="project" />

@@ -4,6 +4,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.bind.annotation.*;
 import sti.oskar.marion.domain.Student;
 import sti.oskar.marion.domain.Teacher;
@@ -85,8 +87,12 @@ public class RestService {
 
     @PostMapping("/addnewteacher")
     @ApiOperation(value = "Adds a new Teacher")
-    public void createTeacher(@RequestBody Teacher newTeacher){
-        teachers.add(new Teacher(newTeacher.getFirstName(), newTeacher.getLastName(), newTeacher.getId(), newTeacher.getSalaryPerHour()));
+    public void createTeacher(@RequestParam String firstName,
+                              @RequestParam String lastName,
+                              @RequestParam int id,
+                              @RequestParam int salaryPerHour)
+    {
+        teachers.add(new Teacher(firstName, lastName, id, salaryPerHour ));
     }
 
 }
