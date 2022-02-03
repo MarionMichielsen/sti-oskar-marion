@@ -13,6 +13,7 @@ import sti.oskar.marion.domain.Teacher;
 import sti.oskar.marion.domain.Course;
 import sti.oskar.marion.service.StiService;
 import sti.oskar.marion.service.StiServiceImpl;
+import sti.oskar.marion.domain.Vault;
 
 import java.sql.SQLException;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,34 +39,30 @@ public class RestService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestService.class);
     private final ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-            "classpath:sti-oskar-marion-service.xml", "classpath: sti-oskar-marion-dao.xml");
+            "classpath:sti-oskar-marion-service.xml");
     private static StiService stiService;
-    private static StiDaoImpl stiDaoImpl;
+ //   private static StiDaoImpl stiDaoImpl;
 
 
     private static List<Student> students;
     private static List<Teacher> teachers;
     private static List<Course> courses;
 
-
     public RestService() throws SQLException {
 
         stiService = (StiService) applicationContext.getBean("stiServiceBean");
-        stiDaoImpl = (StiDaoImpl) applicationContext.getBean("stiDaoBean");
+        //   this.stiDaoImpl = (StiDaoImpl)this.applicationContext.getBean("stiDaoBean");
+        //  stiDaoImpl.loadStudents();
 
-        stiDaoImpl.loadStudents();
-
-
-        students = Arrays.asList(
+      /*  students = Arrays.asList(
                 new Student("Nasir", "Tedros", 8921, "Apple"),
                 new Student("Oskar", "Wadin", 92284, "Windows"),
                 new Student("Luliya", "Masfun", 429, "Asus"));
 
-        teachers=Arrays.asList(
-                new Teacher("Sven" , "Kramer", 8783, 250),
+        teachers = Arrays.asList(
+                new Teacher("Sven", "Kramer", 8783, 250),
                 new Teacher("Ireen", "Wust", 2132, 700),
-                new Teacher("Patrik", "Roest", 2563, 1220));
-        ;
+                new Teacher("Patrik", "Roest", 2563, 1220));*/
 
         /*        Student.builder()
                         .withFirstName("Max")
@@ -75,39 +72,25 @@ public class RestService {
                         .build()*/
 
         LOGGER.info("RestService created");
+
     }
-/*
+
+
     @GetMapping(("/getStudentNames"))
     @ApiOperation(value = "Gets the names of all students")
-    List<String> studentNames = new ArrayList<>();
-        sti
-        studentNames.add(student.toString());
-    }
-        return studentNames;
-
-
-
-
-    public List<String> getStudentNames() {
-        //TODO: refactor Java 7 for-loop to Java 8 stream
+        public List<String> getStudentNames() {
         List<String> studentNames = new ArrayList<>();
-        for (Student student : stiDaoImpl.getStudents()) {
+        for (Student student : Vault.getStudents()) {
             studentNames.add(student.toString());
         }
-        return studentNames;*/
+        return studentNames;
 
+    }
 
-
-    @GetMapping("/getStudentbyfirstName")
-    @ApiOperation(value = "Takes a given name as input and returns the student information")
-    public Student getStudentbyFirstName(@RequestParam String firstName) {
-        Student student = null;
-        for (Student s : students) {
-            if (s.getFirstName().equalsIgnoreCase(firstName)) {
-                student = s;
-            }
-        }
-        return student;
+    @GetMapping("/getStudentbyid")
+    @ApiOperation(value = "Takes an id as input and returns the student information")
+    public String getStudentbyId(@RequestParam int id) {
+        return Vault.getStudentById(id);
     }
 
     @PostMapping("/addnewstudent")
@@ -120,7 +103,7 @@ public class RestService {
 
 
         stiService.createStudent(firstName, lastName, id, computer);
-        stiDaoImpl.createStudent(firstName, lastName, id, computer);
+      //  this.stiDaoImpl.createStudent(firstName, lastName, id, computer);
     }
 
     @PostMapping("/addnewteacher")
@@ -138,12 +121,12 @@ public class RestService {
                                    @RequestParam String name) {
         Student student = null;
         Course course = null;
-        for (Student s : students) {
+        for (Student s : Vault.getStudents()) {
             if (s.getFirstName().equalsIgnoreCase(firstName)) {
                 student = s;
             }
         }
-        for (Course c : courses) {
+        for (Course c : Vault.getCourses()) {
             if (c.getName().equalsIgnoreCase(name)) {
                 course = c;
             }
