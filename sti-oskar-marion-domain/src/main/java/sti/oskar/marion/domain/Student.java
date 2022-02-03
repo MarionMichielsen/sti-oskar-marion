@@ -29,6 +29,9 @@ public class Student {
 
     }
 
+    public Student(String firstName, String lastName, int id, String computer, ArrayList<Course> courses) {
+    }
+
 
     public static List<Course> getCourses() {
         return courses;
@@ -38,6 +41,25 @@ public class Student {
     }
 
 
+    @Override
+    public String toString(){
+        return firstName + " " + lastName;
+    }
+
+    public static Builder builder(){ return new Builder();}
+
+    public int getId(int id) {
+    }
+
+    public String getFirstName() {
+    }
+
+    public static class Builder {
+
+        private String firstName;
+        private String lastName;
+        private int id;
+        private String computer;
     public String getLastName() {
         return lastName;
     }
@@ -53,20 +75,6 @@ public class Student {
     public String getComputer() {
         return computer;
     }
-
-    @Override
-    public String toString(){
-        return firstName + " " + lastName;
-    }
-
-    public static Builder builder(){ return new Builder();}
-
-    public static class Builder {
-
-        private String firstName;
-        private String lastName;
-        private int id;
-        private String computer;
 
 
         public Builder withFirstName(String firstName) {

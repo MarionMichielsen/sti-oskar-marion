@@ -87,11 +87,11 @@ public class RestService {
 
     }
 
-    @GetMapping("/getStudentbyid")
+    /*@GetMapping("/getStudentbyid")
     @ApiOperation(value = "Takes an id as input and returns the student information")
     public String getStudentbyId(@RequestParam int id) {
         return Vault.getStudentById(id);
-    }
+    }*/
 
     @PostMapping("/addnewstudent")
     @ApiOperation(value = "Adds a new student")

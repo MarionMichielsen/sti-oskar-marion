@@ -2,7 +2,6 @@ package sti.oskar.marion.domain;
 
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Vault {
@@ -18,44 +17,44 @@ public class Vault {
     static Course c2 = new Course("Java", 110, 180, 35, t2);
     static Course c3 = new Course("Databashantering", 120, 160, 30, t3);
 
-    static List<Student> students = addStudents();
-    static List<Teacher> teachers = addTeachers();
-    static List<Course> courses = addCourses();
+    static List<Student> students = addStudentsToList();
+    static List<Teacher> teachers = addTeachersToList();
+    static List<Course> courses = addCoursesToList();
 
     public Vault() {
     }
 
-    public static List<Student>getStudents() {
-        return students;
-    }
-
-    public static List<Course>getCourses() {
-        return courses;
-    }
 
     public static void addStudent(String firstName, String lastName, int id, String computer) {
         Student s = new Student(firstName, lastName, id, computer);
         students.add(s);
     }
 
-    public static List<Student> addStudents() {
-        students.add(s1);
-        students.add(s2);
-        students.add(s3);
-        return students;
+    public static void addCourseToStudent(Student student, Course course) {
+        student.courses.add(course);
     }
 
-    public static List<Teacher> addTeachers() {
-        teachers.add(t1);
-        teachers.add(t2);
-        teachers.add(t3);
-        return teachers;
+    public static void deleteCourseFromStudent(Student student, Course course) {
+        student.courses.remove(course);
     }
 
-    public static List<Course> addCourses() {
-        courses.add(c1);
-        courses.add(c1);
-        courses.add(c1);
+    public static Student getStudentById(int id) {
+      for (Student student: students ){
+          if (id == student.getId(id))
+              return student;
+
+            }
+                /*return "id not found....";*/
+    }
+
+    public static ArrayList<Course> addCoursesToNewStudent(){
+        ArrayList<Course> courses = new ArrayList<>();
+        while(true){
+            String userResponse = sc.nextLine();
+            System.out.println("Är det någon mer kurs? Skriv då in vad den heter.");
+            if(userResponse.equalsIgnoreCase("nej"))
+                    break;
+        }
         return courses;
     }
 
@@ -68,22 +67,35 @@ public class Vault {
         s3.courses.add(c2);
     }
 
-    public static void addCourseToStudent(Student student, Course course) {
-        student.courses.add(course);
+    public static List<Student> addStudentsToList() {
+        students.add(s1);
+        students.add(s2);
+        students.add(s3);
+        return students;
     }
 
-    public static void deleteCourseFromStudent(Student student, Course course) {
-        student.courses.remove(course);
+    public static List<Teacher> addTeachersToList() {
+        teachers.add(t1);
+        teachers.add(t2);
+        teachers.add(t3);
+        return teachers;
     }
 
-    public static String getStudentById(int id) {
-      for (Student student: students ){
-          if (id == student.getId())
-              return student.getFirstName()+" "+student.getLastName();
-            }
-                return "id not found....";
-            }
-        }
+    public static List<Course> addCoursesToList() {
+        courses.add(c1);
+        courses.add(c1);
+        courses.add(c1);
+        return courses;
+    }
+
+    public static List<Student>getStudents() {
+        return students;
+    }
+
+    public static List<Course>getCourses() {
+        return courses;
+    }
+}
 
 
 

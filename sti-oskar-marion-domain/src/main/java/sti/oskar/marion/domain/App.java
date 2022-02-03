@@ -1,13 +1,71 @@
 package sti.oskar.marion.domain;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static sti.oskar.marion.domain.Vault.courses;
 
 public class App {
 
-    public static void main(String[] args) {
-
+    public void run(){
         Scanner sc = new Scanner(System.in);
 
-        while(true){
+        while(true) {
+            try {
+                /*menu();*/
+                System.out.println("Meny: \nSkriv in siffra som motsvarar ditt val. \n" +
+                        "1. Hämta en student med id.\n" +
+                        "2. Registrera en student. \n" +
+                        "3. Lägg till eller ta bort kurser från en student");
+
+                int userInput = sc.nextInt();
+                    if (userInput == 1) {
+                        System.out.println("Ange id");
+                        int id = sc.nextInt();
+                        Vault.getStudentById(id);
+                    }
+
+                    if (userInput == 2) {
+                        System.out.println("Ange förnamn, efternamn, id och dator");
+                        String firstName = sc.nextLine();
+                        String lastName = sc.nextLine();
+                        int id = sc.nextInt();
+                        String computer = sc.next();
+                        System.out.println("Vilka kurser tar studenten?");
+                        ArrayList<Course> courses = new ArrayList<>();
+                        courses = Vault.addCoursesToNewStudent();
+                        Student s = new Student(firstName, lastName, id, computer, courses);
+
+                        /*Vault.addCoursesToNewStudent();*/
+                        /*Vault.addStudent(firstName, lastName, id, computer);*/
+                    }
+
+                   /* if (userInput == 3) {
+                        System.out.println("För vilken student vill du ändra kurser?\n" +
+                                "Ange id:");
+                        int id = sc.nextInt();
+                        for (choice:) {
+
+                    }*/
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+    public void menu(){
+        System.out.println("Meny: \nSkriv in siffra som motsvarar ditt val." +
+                "\n1. Hämta en student med id.\n2. Registrera en student." +
+                "\n3. Lägg till eller ta bort kurser från en student");
+    }
+}
+
+
+   /* public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);*/
+
+        /*while(true){
             try{
                 System.out.println("Meny: \nSkriv in siffra som motsvarar ditt val." +
                 "\n1. Hämta en student med id.\n2. Registrera en student." +
@@ -38,7 +96,7 @@ public class App {
                     for(choice : ) {
                         System.out.println(student.firstName);
                     }
-                }
+                }*/
 
 
 
@@ -57,7 +115,7 @@ public class App {
                         vault.getStudentById(id);
                     }*/
 
-                    if (userInput == 2) {
+                    /*if (userInput == 2) {
                         System.out.println("Ange fÃ¶rnamn, efternamn, id och dator");
                         String firstName = sc.next();
                         String lastName = sc.next();
@@ -108,4 +166,4 @@ public class App {
 
 
     }
-}
+}*/
