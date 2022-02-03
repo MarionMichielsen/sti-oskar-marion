@@ -106,14 +106,14 @@ public class RestService {
       //  this.stiDaoImpl.createStudent(firstName, lastName, id, computer);
     }
 
-    @PostMapping("/addnewteacher")
+    /*@PostMapping("/addnewteacher")
     @ApiOperation(value = "Adds a new Teacher")
     public void createTeacher(@RequestParam String firstName,
                               @RequestParam String lastName,
                               @RequestParam int id,
                               @RequestParam int salaryPerHour) {
         teachers.add(stiService.createTeacher(firstName, lastName, id, salaryPerHour));
-    }
+    }*/
 
     @PostMapping("/addcoursetostudent")
     @ApiOperation(value = "Adds a course to an existing student")
@@ -137,5 +137,3 @@ public class RestService {
             stiService.addCourseToStudent(course, student);
     }
 }
-
-
